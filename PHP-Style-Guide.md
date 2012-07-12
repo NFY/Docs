@@ -11,7 +11,8 @@ This guide describes the current practices for NFY PHP code projects built upon 
 - If using an array element to reference an array element, there must be a single space of padding after and before the outer brackets
 
 ```php
-    $foo[ $bar[0] ];
+<?php
+    $blah = $foo[ $bar[0] ];
 ```
 
 ##2. Indentation and brace placement
@@ -22,6 +23,7 @@ This guide describes the current practices for NFY PHP code projects built upon 
 - Opening braces should always be placed on the same line as the class/method/control structure declaration. (Kernigan and Richie format).  Example:
 
 ```php
+<?php
 function foo () {
     //do something
 }
@@ -32,6 +34,7 @@ function foo () {
 - Select statements should keep all case logic on the same level as the opening statement:
 
 ```php
+<?php
 select ($var) {
 case 1:
     break;
@@ -43,6 +46,7 @@ case 2:
 - It is preferred that all control logic and function parameter lists be retained on a single line, but if it is necessary to split on to multiple lines, the first carriage return should be immediately following the opening parenthesis and each unit should be on a separate line.  Boolean operators and commas should tail the statement that came before:
 
 ```php
+<?php
 if (
     $var1 &&
     $var2 ||
@@ -69,26 +73,27 @@ $foo->bar(
 - Private properties and protected properties which may be overridden but aren't expected to be should be prefixed with an underscore.
 
 ```php
-    class Example {
-        const PERIOD_DELAY = 10;
-        
-        static $UNCHANGING_LIST = array(
-            'var1' => 'foo',
-            'var2' => 'bar'
-        );
-        
-        public $property;
-        protected $_property;
-        
-        public memberFunction () {
-            
-        }
-        
-        public static StaticFunction () {
-            
-        }
+<?php
+class Example {
+    const PERIOD_DELAY = 10;
+    
+    static $UNCHANGING_LIST = array(
+        'var1' => 'foo',
+        'var2' => 'bar'
+    );
+    
+    public $property;
+    protected $_property;
+    
+    public memberFunction () {
         
     }
+    
+    public static StaticFunction () {
+        
+    }
+    
+}
 ```
 
 ##4. Static vs member methods and properties
@@ -107,11 +112,12 @@ Objects instantiation exists for the purpose of retaining and interacting with a
 - It is recommended that any functionality triggered by parameters on the constructor/initializer function should also be available as a chainable function.
 
 ```php
-    ChainedClass::Start()
-        ->firstFunction()
-        ->secondFunction()
-        ->thirdFunction()
-    ;
+<?php
+ChainedClass::Start()
+    ->firstFunction()
+    ->secondFunction()
+    ->thirdFunction()
+;
 ```
 
 ##6. Other
